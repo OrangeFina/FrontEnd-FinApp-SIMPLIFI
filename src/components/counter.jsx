@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./mycss.css";
+import axios from "axios";
 
 class Counter extends Component {
   state = {
@@ -7,7 +8,24 @@ class Counter extends Component {
   };
 
   imdone = () => {
-    window.location.href = "/dashboard";
+    window.location.href = "/allocation";
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const game = {
+      count: this.state.count
+    };
+
+    axios
+      .post("https://my-json-server.typicode.com/typicode/demo/db", {
+        game
+      })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      });
   };
 
   handleIncrement = () => {
@@ -22,20 +40,29 @@ class Counter extends Component {
 
   render() {
     return (
-      <div class="buttons">
+      <div className="buttons">
+        <h1 class="footer"> Rules of the Game </h1>
+        <h5 class="footer">
+          You will click and earn as many point as possible. However, there is a
+          secret limit that will return you to zero points. Once you think you
+          have enough points, hit button{" "}
+          <b>"That is enough for me." at the bottom</b> to save your points! You
+          have one try, all the best!
+        </h5>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <br />
         <button
           type="buttons"
           onClick={this.handleIncrement}
-          className="btn btn-secondary btn-lg btn-block"
+          className="btn btn-secondary btn-lg"
         >
-          Click me before I disappear!
+          Click ME to earn points!
         </button>
         <button
-          type="buttons"
+          onSubmit={this.handleSubmit}
+          type="submit"
           onClick={this.imdone}
-          className="btn btn-dark btn-sm"
+          className="btn btn-dark btn-lg"
         >
           That is enough for me.
         </button>
