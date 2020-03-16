@@ -1,6 +1,10 @@
 import React from "react";
 import axios from "axios";
 
+// for axios and django integration added querystring import
+
+import querystring from 'querystring';
+
 class Qinputs extends React.Component {
   state = {
     inputs: []
@@ -11,18 +15,20 @@ class Qinputs extends React.Component {
   };
 
   handleChange = event => {
-    this.setState({ inputs: event.target.value });
+    //appends new value into array
+    this.state.inputs.push(event.target.value);
   };
+  
 
   handleSubmit = () => {
     const question = {
-      question: this.state.inputs
+      'question': this.state.inputs
     };
 
+    // formats the inputs for django
+    const submission = querystring.stringify(question); 
     axios
-      .get("http://127.0.0.1:8000/risk-list", {
-        question
-      })
+      .get("http://127.0.0.1:8000/risk-list?" + submission,{question})
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -34,7 +40,7 @@ class Qinputs extends React.Component {
     return (
       <div>
         <h2 class="header">Questionnaire</h2>
-        <form id="myForm">
+        <form id="myForm" method='get'>
           <label>
             <div class="question">Question 1</div>
             <b>
@@ -66,7 +72,7 @@ class Qinputs extends React.Component {
           <input
             onChange={this.handleChange}
             type="text"
-            name="questions"
+            name="question1"
             placeholder="A , B , C"
           />
           <br />
@@ -95,7 +101,7 @@ class Qinputs extends React.Component {
           <input
             onChange={this.handleChange}
             type="text"
-            name="questions"
+            name="question2"
             placeholder="A , B , C"
           />
           <br />
@@ -120,7 +126,7 @@ class Qinputs extends React.Component {
           <input
             onChange={this.handleChange}
             type="text"
-            name="questions"
+            name="question3"
             placeholder="A , B , C"
           />
           <br />
@@ -149,7 +155,7 @@ class Qinputs extends React.Component {
           <input
             onChange={this.handleChange}
             type="text"
-            name="questions"
+            name="question4"
             placeholder="A , B , C"
           />
           <br />
@@ -174,7 +180,7 @@ class Qinputs extends React.Component {
           <input
             onChange={this.handleChange}
             type="text"
-            name="questions"
+            name="question5"
             placeholder="A , B , C"
           />
           <br />
@@ -207,7 +213,7 @@ class Qinputs extends React.Component {
           <input
             onChange={this.handleChange}
             type="text"
-            name="questions"
+            name="question6"
             placeholder="A , B , C"
           />
           <br />
@@ -232,7 +238,7 @@ class Qinputs extends React.Component {
           <input
             onChange={this.handleChange}
             type="text"
-            name="questions"
+            name="question7"
             placeholder="A , B , C"
           />
           <br />
@@ -258,7 +264,7 @@ class Qinputs extends React.Component {
           <input
             onChange={this.handleChange}
             type="text"
-            name="questions"
+            name="question8"
             placeholder="A , B , C"
           />
           <br />
@@ -286,7 +292,7 @@ class Qinputs extends React.Component {
           <input
             onChange={this.handleChange}
             type="text"
-            name="questions"
+            name="question9"
             placeholder="A , B , C"
           />
           <br />
@@ -314,7 +320,7 @@ class Qinputs extends React.Component {
           <input
             onChange={this.handleChange}
             type="text"
-            name="questions"
+            name="question10"
             placeholder="A , B , C"
           />
           <br />
@@ -341,7 +347,7 @@ class Qinputs extends React.Component {
           <input
             onChange={this.handleChange}
             type="text"
-            name="questions"
+            name="question11"
             placeholder="A , B , C"
           />
           <br />
@@ -354,7 +360,7 @@ class Qinputs extends React.Component {
           <input
             onChange={this.handleChange}
             type="text"
-            name="questions"
+            name="question12"
             placeholder="Business, Chemistry, Engineering"
           />
           <br />
@@ -363,7 +369,7 @@ class Qinputs extends React.Component {
           <input
             onChange={this.handleChange}
             type="text"
-            name="questions"
+            name="question13"
             placeholder="Chemist, Driver, Manager"
           />
           <br />
@@ -372,7 +378,7 @@ class Qinputs extends React.Component {
           <input
             onChange={this.handleChange}
             type="text"
-            name="questions"
+            name="question14"
             placeholder="Basketball, Tennis, Gardening"
           />
           <br />
