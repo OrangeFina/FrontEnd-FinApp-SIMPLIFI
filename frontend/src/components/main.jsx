@@ -10,33 +10,44 @@ import Full from "./Full";
 import FullStock from "./Fullstock";
 import Newsoutput2 from "./newsoutput2";
 import AaplChart from "./aaplchart";
+import Grid from "@material-ui/core/Grid";
 
 export default function BasicExample() {
   return (
     <Router>
       <div>
         <ul id="nav">
-          <li>
-            <Link to="/">About</Link>
-          </li>
-          <li>
-            <Link to="/LOGIN">Login</Link>
-          </li>
-          <li>
-            <Link to="/qinputs">Risk Profile</Link>
-          </li>
-          {/* <li>
+          <Grid container spacing={1}>
+            <Grid item xs={6}>
+              <li>
+                <Link to="/">About</Link>
+              </li>
+              {/* <li>
+              <Link to="/LOGIN">Login</Link>
+            </li> */}
+              <li>
+                <Link to="/qinputs">Risk Profile</Link>
+              </li>
+              {/* <li>
             <Link to="/counter">Counter Game</Link>
           </li> */}
-          <li>
-            <Link to="/allocation">Asset Allocation</Link>
-          </li>
-          <li>
-            <Link to="/full">Stock Explorer</Link>
-          </li>
-          <li>
-            <Link to="/advanced">Relevant News Engine</Link>
-          </li>
+              <li>
+                <Link to="/allocation">Asset Allocation</Link>
+              </li>
+              <li>
+                <Link to="/full">Stock Explorer</Link>
+              </li>
+              <li>
+                <Link to="/advanced">Relevant News Engine</Link>
+              </li>
+            </Grid>
+            <Grid item xs={5}></Grid>
+            <Grid item xs={1}>
+              <li>
+                <Link to="/LOGIN">Login</Link>
+              </li>
+            </Grid>
+          </Grid>
         </ul>
 
         <Switch>

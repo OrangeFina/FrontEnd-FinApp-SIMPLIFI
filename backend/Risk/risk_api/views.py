@@ -13,15 +13,15 @@ import statistics
 
 def risk_list(request):
 
-    user_answer = request.GET.get('response', None)
-    context_data = {'response': user_answer}
+    user_answer = request.GET.get('question', None)
+    context_data = {'question': user_answer}
     if user_answer is None:
         return JsonResponse(data=context_data)
 
     #assume response given is questinnaire(11 responses) followed by counter
     #sample input = "a,a,a,a,a,a,a,a,a,a,a,50"
-    response = "a,a,a,a,a,a,a,a,a,a,a,50"
-    full_input = response.upper().split(",")
+    # response = "a,a,a,a,a,a,a,a,a,a,a,50"
+    full_input = user_answer.upper()
     counter_raw_data = [69, 92, 48, 47, 120, 60, 100, 88, 88, 100, 55, 30, 35, 90, 99, 120, 30, 69, 88, 101, 95, 90, 66,
                         67, 67, 43, 108, 150, 100, 70]
 

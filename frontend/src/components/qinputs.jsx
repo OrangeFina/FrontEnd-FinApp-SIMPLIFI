@@ -7,27 +7,26 @@ class Qinputs extends React.Component {
   };
 
   Qimdone = () => {
-    window.location.href = "/counter";
+    this.handleSubmit();
   };
 
   handleChange = event => {
     this.setState({ inputs: event.target.value });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-
+  handleSubmit = () => {
     const question = {
-      inputs: this.state.inputs
+      question: this.state.inputs
     };
 
     axios
-      .post("https://my-json-server.typicode.com/typicode/demo/db", {
+      .get("http://127.0.0.1:8000/risk-list", {
         question
       })
       .then(res => {
         console.log(res);
         console.log(res.data);
+        window.location = "/counter";
       });
   };
 
@@ -35,7 +34,7 @@ class Qinputs extends React.Component {
     return (
       <div>
         <h2 class="header">Questionnaire</h2>
-        <form onSubmit={this.handleSubmit} id="myForm" action="/counter">
+        <form id="myForm">
           <label>
             <div class="question">Question 1</div>
             <b>
