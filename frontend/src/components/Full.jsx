@@ -1,49 +1,58 @@
 import React, { Component } from "react";
 import axios from "axios";
 import data from "./stockdata";
-import FullStock from "./Fullstock";
+import stockresult from "./stockresult.json"
 
-var i = 49;
-var ii = 68;
-var iii = 382;
+
+
+// dependent on the selection (need react from django)
+
 
 class Full extends Component {
   state = {
     inputs: []
   };
 
-  Fimdone = () => {
+
+  Fimdone1 = () => {
     window.location.href = "/Fullstock";
+  };
+  Fimdone2 = () => {
+    window.location.href = "/Fullstock1";
+  };
+  Fimdone3 = () => {
+    window.location.href = "/Fullstock2";
   };
 
   render() {
+    console.log(stockresult)
     return (
       <div className="full">
         <div className="sticker">
-          <h1>Ticker: {data.Ticker[i]}</h1>{" "}
-          <h2>Company Name: {data.CompanyName[i]}</h2>
-          <h6>Brief Description: {data.Profile[i]}</h6>
-          <button onClick={this.Fimdone}>
+          <h1>Ticker: {stockresult.company_name_ticker[0]}</h1>{" "}
+          <h2>Company Name: {stockresult.company_name_ticker[0]}</h2>
+          <h6>Brief Description: {stockresult.profile[0]}</h6>
+          <button onClick={this.Fimdone1}>
             {" "}
-            Click to learn more about {data.Ticker[i]}
+            Click to learn more about {stockresult.company_name_ticker[0]}
           </button>
         </div>
         <div className="sticker">
-          <h1>Ticker: {data.Ticker[ii]}</h1>
-          <h2>Company Name: {data.CompanyName[ii]}</h2>
-          <h6>Brief Description: {data.Profile[ii]}</h6>
-          <button onClick={this.Fimdone}>
+          <h1>Ticker: {stockresult.company_name_ticker[1]}</h1>
+          <h2>Company Name: {stockresult.company_name_ticker[1]}</h2>
+          <h6>Brief Description: {stockresult.profile[1]}</h6>
+          <button onClick={this.Fimdone2}>
             {" "}
-            Click to learn more about {data.Ticker[iii]}
+            Click to learn more about {stockresult.company_name_ticker[1]}
           </button>
         </div>
         <div className="sticker">
-          <h1>Ticker: {data.Ticker[iii]}</h1>
-          <h2>Company Name: {data.CompanyName[iii]}</h2>
-          <h6>Brief Description: {data.Profile[iii]}</h6>
-          <button onClick={this.Fimdone}>
+          <h1>Ticker: {stockresult.company_name_ticker[2]}</h1>
+          <h2>Company Name: {stockresult.company_name_ticker[2]}</h2>
+          <h6>Brief Description: {stockresult.profile[2]}</h6>
+          <button onClick={this.Fimdone3}>
             {" "}
-            Click to learn more about {data.Ticker[iii]}
+            Click to learn more about {stockresult.company_name_ticker[2]}
           </button>
         </div>
       </div>

@@ -16,7 +16,8 @@ class Qinputs extends React.Component {
 
   handleChange = event => {
     //appends new value into array
-    this.state.inputs.push(event.target.value);
+    const value = event.target.value;
+    this.state.inputs.push(value);
   };
   
 
@@ -33,6 +34,7 @@ class Qinputs extends React.Component {
         console.log(res);
         console.log(res.data);
         window.location = "/counter";
+        
       });
   };
 
@@ -70,7 +72,7 @@ class Qinputs extends React.Component {
           </label>
           <br />
           <input
-            onChange={this.handleChange}
+            onBlur={this.handleChange}
             type="text"
             name="question1"
             placeholder="A , B , C"
@@ -99,7 +101,7 @@ class Qinputs extends React.Component {
           C. Less than 35%
           <br />
           <input
-            onChange={this.handleChange}
+            onBlur={this.handleChange}
             type="text"
             name="question2"
             placeholder="A , B , C"
@@ -124,7 +126,7 @@ class Qinputs extends React.Component {
           </label>
           <br />
           <input
-            onChange={this.handleChange}
+            onBlur={this.handleChange}
             type="text"
             name="question3"
             placeholder="A , B , C"
@@ -153,7 +155,7 @@ class Qinputs extends React.Component {
           </label>
           <br />
           <input
-            onChange={this.handleChange}
+            onBlur={this.handleChange}
             type="text"
             name="question4"
             placeholder="A , B , C"
@@ -178,7 +180,7 @@ class Qinputs extends React.Component {
           </label>
           <br />
           <input
-            onChange={this.handleChange}
+            onBlur={this.handleChange}
             type="text"
             name="question5"
             placeholder="A , B , C"
@@ -211,7 +213,7 @@ class Qinputs extends React.Component {
           </label>
           <br />
           <input
-            onChange={this.handleChange}
+            onBlur={this.handleChange}
             type="text"
             name="question6"
             placeholder="A , B , C"
@@ -236,7 +238,7 @@ class Qinputs extends React.Component {
           </label>
           <br />
           <input
-            onChange={this.handleChange}
+            onBlur={this.handleChange}
             type="text"
             name="question7"
             placeholder="A , B , C"
@@ -262,7 +264,7 @@ class Qinputs extends React.Component {
           </label>
           <br />
           <input
-            onChange={this.handleChange}
+            onBlur={this.handleChange}
             type="text"
             name="question8"
             placeholder="A , B , C"
@@ -290,7 +292,7 @@ class Qinputs extends React.Component {
           </label>
           <br />
           <input
-            onChange={this.handleChange}
+            onBlur={this.handleChange}
             type="text"
             name="question9"
             placeholder="A , B , C"
@@ -318,7 +320,7 @@ class Qinputs extends React.Component {
           </label>
           <br />
           <input
-            onChange={this.handleChange}
+            onBlur={this.handleChange}
             type="text"
             name="question10"
             placeholder="A , B , C"
@@ -345,7 +347,7 @@ class Qinputs extends React.Component {
           </label>
           <br />
           <input
-            onChange={this.handleChange}
+            onBlur={this.handleChange}
             type="text"
             name="question11"
             placeholder="A , B , C"
@@ -358,28 +360,31 @@ class Qinputs extends React.Component {
           <b> Your Education </b>
           <br />
           <input
-            onChange={this.handleChange}
+            onBlur={this.handleChange}
             type="text"
             name="question12"
             placeholder="Business, Chemistry, Engineering"
+            value={this.state.education}
           />
           <br />
           <b> Your Profession </b>
           <br />
           <input
-            onChange={this.handleChange}
+            onBlur={this.handleChange}
             type="text"
             name="question13"
             placeholder="Chemist, Driver, Manager"
+            value={this.state.profession}
           />
           <br />
           <b> Your Interest </b>
           <br />
           <input
-            onChange={this.handleChange}
+            onBlur={this.handleChange}
             type="text"
             name="question14"
             placeholder="Basketball, Tennis, Gardening"
+            value={this.state.interest}
           />
           <br />
           <button type="submit" onClick={this.Qimdone}>

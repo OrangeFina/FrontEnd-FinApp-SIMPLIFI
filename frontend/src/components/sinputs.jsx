@@ -1,33 +1,38 @@
 import React from "react";
 import axios from "axios";
 
+import querystring from 'querystring';
+
 class Sinputs extends React.Component {
   state = {
     inputs: []
   };
 
   Simdone = () => {
-    window.location.href = "/newsoutput2";
+    this.handleSubmit();
   };
 
   handleChange = event => {
-    this.setState({ inputs: event.target.value });
+    //appends new value into array
+    const value = event.target.value;
+    this.state.inputs.push(value);
   };
+  
 
-  handleSubmit = event => {
-    event.preventDefault();
-
+  handleSubmit = () => {
     const question = {
-      inputs: this.state.inputs
+      'question': this.state.inputs
     };
 
+    // formats the inputs for django
+    const submission = querystring.stringify(question); 
     axios
-      .post("https://my-json-server.typicode.com/typicode/demo/db", {
-        question
-      })
+      .get("http://127.0.0.1:8000/stock-query?" + submission,{question})
       .then(res => {
         console.log(res);
         console.log(res.data);
+        // window.location = "/newsoutputs2";
+        
       });
   };
 
@@ -40,11 +45,10 @@ class Sinputs extends React.Component {
           </label>
           <br />
           <input
-            id="ticker"
+            name="ticker"
             type="text"
             placeholder="e.g. AAPL"
-            name="ticker"
-            required
+            onBlur={this.handleChange}
           />
         </div>
         <br />
@@ -56,11 +60,10 @@ class Sinputs extends React.Component {
           </label>
           <br />
           <input
-            id="sDate"
             type="text"
             placeholder="DD/MM/YY"
             name="sDate"
-            required
+            onBlur={this.handleChange}
           />
           <br />
           <label>
@@ -68,18 +71,17 @@ class Sinputs extends React.Component {
           </label>
           <br />
           <input
-            id="eDate"
             type="text"
             placeholder="DD/MM/YY"
-            name="eDate"
-            required
+            name="sDate"
+            onBlur={this.handleChange}
           />
           <button type="submit" onClick={this.Simdone}>
             Analyse
           </button>
         </div>
         <div>
-          <label>
+          {/* <label>
             <b>Price/Volume</b>
           </label>
           <br />
@@ -90,17 +92,26 @@ class Sinputs extends React.Component {
             name="PV"
             required
           />
-          <br />
+          <br /> */}
           <label>
             <b>Factor change</b>
           </label>
           <br />
           <input
-            id="change"
             type="text"
-            placeholder="in % or millions (e.g. +3, -3)"
+            placeholder="Pos or Neg"
             name="change"
-            required
+            onBlur={this.handleChange}
+          />
+          <label>
+            <b>Factor Value</b>
+          </label>
+          <br />
+          <input
+            type="text"
+            placeholder="1,2,3"
+            name="change"
+            // onBlur={this.handleChange}
           />
         </div>
       </form>

@@ -8,9 +8,12 @@ import Sinputs from "./sinputs";
 import Allocation from "./allocation";
 import Full from "./Full";
 import FullStock from "./Fullstock";
+import FullStock1 from "./Fullstock1";
+import FullStock2 from "./Fullstock2";
 import Newsoutput2 from "./newsoutput2";
 import AaplChart from "./aaplchart";
 import Grid from "@material-ui/core/Grid";
+
 
 export default function BasicExample() {
   return (
@@ -71,6 +74,12 @@ export default function BasicExample() {
           </Route>
           <Route path="/fullstock">
             <FullStock />
+          </Route>
+          <Route path="/fullstock1">
+            <FullStock1 />
+          </Route>
+          <Route path="/fullstock2">
+            <FullStock2 />
           </Route>
           <Route path="/advanced">
             <Sinputs />

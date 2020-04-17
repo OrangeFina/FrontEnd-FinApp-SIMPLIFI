@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./mycss.css";
 import axios from "axios";
+import querystring from 'querystring';
 
 class Counter extends Component {
   state = {
@@ -8,24 +9,26 @@ class Counter extends Component {
   };
 
   imdone = () => {
-    window.location.href = "/allocation";
+    this.handleSubmit();
+    // window.location.href = "/allocation";
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-
+  handleSubmit = () => {
+    // event.preventDefault();
     const game = {
-      count: this.state.count
+      'count': this.state.count
     };
 
+    const submission = querystring.stringify(game); 
+
     axios
-      .post("https://my-json-server.typicode.com/typicode/demo/db", {
-        game
-      })
+      .get("http://127.0.0.1:8000/questionnaire?"+ submission,{game})
       .then(res => {
         console.log(res);
         console.log(res.data);
+        window.location = "/allocation";
       });
+      window.location.href = '/allocation';
   };
 
   handleIncrement = () => {
@@ -58,14 +61,17 @@ class Counter extends Component {
         >
           Click ME to earn points!
         </button>
+        
         <button
-          onSubmit={this.handleSubmit}
-          type="submit"
-          onClick={this.imdone}
-          className="btn btn-dark btn-lg"
-        >
-          That is enough for me.
-        </button>
+            onSubmit={this.handleSubmit}
+            type="buttons"
+            onClick={this.imdone}
+            className="btn btn-dark btn-lg"
+            action="/allocation"
+          >
+            That is enough for me.
+          </button>
+
       </div>
     );
   }

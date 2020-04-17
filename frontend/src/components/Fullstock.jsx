@@ -1,59 +1,78 @@
 import React, { Component } from "react";
 import axios from "axios";
-import data from "./stockdata";
-
-var i = 49;
-var ii = 68;
-var iii = 382;
+import details from "./details";
+import stockdetails from "./0";
 
 class FullStock extends Component {
+  
+  handleSubmit = () => {
+    // const question = {
+    //   'question': this.state.inputs
+    // };
+
+    // // formats the inputs for django
+    // const submission = querystring.stringify(question); 
+    axios
+      .get("http://127.0.0.1:8000/stockexplorer?"+ "load")
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+        window.location = "/counter";
+        
+      });
+  };
+// just copy paste this 3 times and route to each button easier then each page just 1 = 1,2,3
+
   render() {
+
     return (
       <div className="full">
+        <body onload = {this.handleSubmit}>
         <div className="sticker">
-          <h1 className="header">Ticker: {data.Ticker[i]}</h1>
-          <h2 className="header">Company Name: {data.CompanyName[i]}</h2>
+          {/* <h1 className="header">Ticker: {details.Ticker[0]}</h1> */}
+          <h2 className="header">Company Name: {stockdetails.company_name_ticker[0]}</h2>
           <ul className="fullstock">
-            <h6>Market Capitalisation: {data.MarketCap[i]}</h6>
-            <h6>Net Income (TTM): {data.NetIncome[i]}</h6>
-            <h6>Revenue (TTM): {data.Revenue[i]}</h6>
-            <h6>Book Value per Share: {data.BookValueShare[i]}</h6>
-            <h6>Cash per Share: {data.CashShare[i]}</h6>
-            <h6>Dividend: {data.Dividend[i]}</h6>
-            <h6>Mean Recommendation: {data.MeanRecommendation[i]}</h6>
-            <h6>P/E: {data.PE[i]}</h6>
-            <h6>Forward P/E: {data.FwdPE[i]}</h6>
-            <h6>PEG: {data.PEG[i]}</h6>
-            <h6>P/S: {data.PS[i]}</h6>
-            <h6>P/B: {data.PB[i]}</h6>
-            <h6>P/C: {data.PC[i]}</h6>
-            <h6>P/FCF: {data.PFCF[i]}</h6>
-            <h6>Quick Ratio: {data.QuickRatio[i]}</h6>
-            <h6>Current Ratio: {data.CurrentRatio[i]}</h6>
-            <h6>Debt/Equity: {data.DebtEquity[i]}</h6>
-            <h6>LT Debt/Equity: {data.LTDebtEquity[i]}</h6>
-            <h6>EPS (TTM): {data.EPS[i]}</h6>
-            <h6>EPS (Next Y): {data.EPSNextY[i]}</h6>
-            <h6>EPS (Next Q): {data.EPSNextQ[i]}</h6>
-            <h6>EPS % (Past 5Y): {data.EPSPast5Y[i]}</h6>
-            <h6>Sales Growth (Past 5Y): {data.SalesGrowthPast5Y[i]}</h6>
-            <h6>Sales Q/Q: {data.SalesQQ[i]}</h6>
-            <h6>EPS Q/Q: {data.EPSQQ[i]}</h6>
-            <h6>ROA (TTM): {data.ROA[i]}</h6>
-            <h6>ROE (TTM): {data.ROE[i]}</h6>
-            <h6>ROI (TTM): {data.ROI[i]}</h6>
-            <h6>Gross Margin: {data.GrossMargin[i]}</h6>
-            <h6>Operating Margin: {data.OperatingMargin[i]}</h6>
-            <h6>Profit Margin: {data.ProfitMargin[i]}</h6>
-            <h6>Shares Outstanding: {data.SharesOutstanding[i]}</h6>
-            <h6>Shares Float: {data.SharesFloat[i]}</h6>
-            <h6>52W Range: {data.W52Range[i]}</h6>
-            <h6>Avg 3M Volume: {data.Avg3MVolume[i]}</h6>
-            <h6>Volume: {data.Volume[i]}</h6>
-            <h6>Beta: {data.Beta[i]}</h6>
-            <h6>Prev Close: {data.PrevClose[i]}</h6>
+            <h6>Market Capitalisation: {stockdetails.market_cap[0]}</h6>
+            <h6>Net Income (TTM): {stockdetails.net_income[0]}</h6>
+            <h6>Revenue (TTM): {stockdetails.revenue[0]}</h6>
+            <h6>Book Value per Share: {stockdetails.book_value_share[0]}</h6>
+            <h6>Cash per Share: {stockdetails.cash_share[0]}</h6>
+            <h6>Dividend: {stockdetails.div[0]}</h6>
+            {/* <h6>Mean Recommendation: {stockdetails.MeanRecommendation[0]}</h6> */}
+            <h6>P/E: {stockdetails.pe[0]}</h6>
+            <h6>Forward P/E: {stockdetails.pe_fwd[0]}</h6>
+            <h6>PEG: {stockdetails.peg[0]}</h6>
+            <h6>P/S: {stockdetails.ps[0]}</h6>
+            <h6>P/B: {stockdetails.pb[0]}</h6>
+            <h6>P/C: {stockdetails.pc[0]}</h6>
+            <h6>P/FCF: {stockdetails.pfcf[0]}</h6>
+            <h6>Quick Ratio: {stockdetails.quick_ratio[0]}</h6>
+            <h6>Current Ratio: {stockdetails.current_ratio[0]}</h6>
+            <h6>Debt/Equity: {stockdetails.debt_equity[0]}</h6>
+            {/* <h6>LT Debt/Equity: {stockdetails.LTDebtEquity[0]}</h6> */}
+            <h6>EPS (TTM): {stockdetails.eps_ttm[0]}</h6>
+            {/* <h6>EPS (Next Y): {stockdetails.EPSNextY[0]}</h6>
+            <h6>EPS (Next Q): {stockdetails.EPSNextQ[0]}</h6>
+            <h6>EPS % (Past 5Y): {stockdetails.EPSPast5Y[0]}</h6> */}
+            {/* <h6>Sales Growth (Past 5Y): {stockdetails.SalesGrowthPast5Y[0]}</h6> */}
+            <h6>Sales Q/Q: {stockdetails.sales_qonq[0]}</h6>
+            <h6>EPS Q/Q: {stockdetails.eps_qonq[0]}</h6>
+            <h6>ROA (TTM): {stockdetails.roa[0]}</h6>
+            <h6>ROE (TTM): {stockdetails.roe[0]}</h6>
+            <h6>ROI (TTM): {stockdetails.roi[0]}</h6>
+            <h6>Gross Margin: {stockdetails.gross_margin[0]}</h6>
+            <h6>Operating Margin: {stockdetails.op_margin[0]}</h6>
+            <h6>Profit Margin: {stockdetails.profit_margin[0]}</h6>
+            <h6>Shares Outstanding: {stockdetails.shares_outstanding[0]}</h6>
+            <h6>Shares Float: {stockdetails.shares_float[0]}</h6>
+            <h6>52W Range: {stockdetails.fifty_two_weeks[0]}</h6>
+            {/* <h6>Avg 3M Volume: {stockdetails.Avg3MVolume[0]}</h6>
+            <h6>Volume: {stockdetails.Volume[0]}</h6> */}
+            <h6>Beta: {stockdetails.beta[0]}</h6>
+            <h6>Prev Close: {stockdetails.prev_close[0]}</h6>
           </ul>
         </div>
+        </body>
       </div>
     );
   }

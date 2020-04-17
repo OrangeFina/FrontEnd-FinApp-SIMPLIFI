@@ -42,7 +42,7 @@ html {
 .question {
   margin: 5;
   font-size: 120%;
-  text-align: center;
+  text-align: left;
   font-weight: bold;
   color: rgb(60, 74, 94);
 }
@@ -179,7 +179,7 @@ td {
 form {
   margin: 10px 400px;
   border: 0px solid;
-  text-align: center;
+  text-align: left;
   font-family: "Roboto";
 }
 

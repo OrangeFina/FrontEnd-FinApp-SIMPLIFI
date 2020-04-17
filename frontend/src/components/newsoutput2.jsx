@@ -3,6 +3,7 @@ import axios from "axios";
 import Newsoutput from "./newsoutput";
 import Sinputs from "./sinputs";
 import AaplChart from "./aaplchart";
+import DailyStockChart from "./daily_stock_chart.js";
 
 class Newsoutput2 extends React.Component {
   state = {
@@ -16,7 +17,7 @@ class Newsoutput2 extends React.Component {
           <Sinputs />
         </div>
         <div>
-          <AaplChart />
+          <DailyStockChart />
         </div>
         <div className="inline">
           <Newsoutput />
@@ -27,3 +28,9 @@ class Newsoutput2 extends React.Component {
 }
 
 export default Newsoutput2;
+
+// range of date
+// if column[date] is within range of date
+// append into new array
+// new array sort by top
+// take out top 3
